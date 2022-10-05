@@ -1,21 +1,3 @@
-//prueba de buscador
-
-//let articulo1 = (tipo = "auto", marca = "volkswagen", modelo = "2018");
-//let articulo2 = (tipo = "camioneta", marca = "ford", modelo = "2020");
-//let articulo3 = (tipo = "auto", marca = "fiat", modelo = "2018");
-
-//function buscarArticulo() {
- //   let tipo = prompt("¿Que tipo de vehiculo estas buscando?");
- //   let marca = prompt("¿Que marca es?");
- //   let modelo = prompt("¿Que modelo es?");
-//}
-
-// if (disponibilidadArticulo = true) {
-  //  console.log("¿Desea comprar este articulo?");
-//} else if (disponibilidadArticulo = false){
-//    console.log("Este articulo no esta disponible");/
-//} 
-
 
 // Iniciar Sesion
 
@@ -41,8 +23,9 @@ for (let loginAttemps = 3; loginAttemps > 0; loginAttemps--) {
 
 // Calculador de precio de producto
 
-let producto = prompt("¿Que desea comprar?");
-let cantidad = parseInt(prompt("¿Cuantos quieres llevar?"));
+
+let producto = prompt("¿Que desea comprar?").toLocaleLowerCase;
+let cantidad = parseInt(prompt("¿Cuantos quieres llevar?").toLocaleLowerCase);
 
 
 let precioProducto
@@ -72,6 +55,7 @@ alert ("Tiene que pagar $"+ precioTotal);
 
 // Calculador de intereses
 
+
 function calcularCuotas (precio, cuotas, porcentaje){
     let interes = precio * porcentaje/100;
     let valorCuota  = precio / cuotas + interes;
@@ -82,3 +66,39 @@ function calcularCuotas (precio, cuotas, porcentaje){
 
 let valorProducto = calcularCuotas( parseInt(prompt("Precio del producto")), (parseInt(prompt("Cantudad de cuotas"))), (parseInt(prompt("Porcentaje interes"))));
  console.log (valorProducto);
+
+
+ // Arituculos
+
+
+ function Vehiculos(modelo, marca, version, anio, combustible, precio){
+    this.modelo = modelo;
+    this.marca = marca;
+    this.version = version
+    this.anio = anio;
+    this.combustible = combustible;
+    this.precio = precio;
+ }
+
+ const volkswagenGolTrend = new Vehiculos("Auto","Volkswagen", "Gol Trend", "2018", "Nafta", "$3500000");
+ const fiatPalio = new Vehiculos("Auto","Fiat", "Palio", "2014", "Nafta", "$3500000");
+ const fordFiesta = new Vehiculos("Auto","Ford", "Fiesta Kinetic", "2014", "Nafta", "$2750000");
+ const peugeot208 = new Vehiculos("Auto","Peugeot","208", "2017", "Diesel", "$3890000");
+ const toyotaHilux = new Vehiculos("Camioneta","Toyota", "Hilux", "2015", "Turbo Diesel", "$4350000");
+
+ 
+ //Agregar articulos nuevos
+
+
+const nuevoVehiculo = () =>  {
+	let modeloVehiculo = prompt("Modelo (Auto, Camioneta, Utilitario)");
+	let marcaVehiculo = prompt("Marca");
+	let versionVehiculo = prompt("Version");
+	let anioVehiculo = parseInt(prompt("Año"));
+	let combustibleVehiculo = prompt("Combustible");
+	let precioVehiculo = parseInt(prompt("Precio"));
+
+    const vehiculo = new Vehiculos(modeloVehiculo, marcaVehiculo, versionVehiculo, anioVehiculo, combustibleVehiculo, precioVehiculo);
+    console.log(vehiculo);
+    return vehiculo;
+}

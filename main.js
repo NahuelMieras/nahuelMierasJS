@@ -64,41 +64,59 @@ function calcularCuotas (precio, cuotas, porcentaje){
     return precioFinal;
 }
 
-let valorProducto = calcularCuotas( parseInt(prompt("Precio del producto")), (parseInt(prompt("Cantudad de cuotas"))), (parseInt(prompt("Porcentaje interes"))));
- console.log (valorProducto);
+ let precioArticulo = parseInt(prompt("Precio del producto"));
+ let cantidadCuotas = parseInt(prompt("Cantidad de cuotas"));
+ let porcentajeInteres = parseInt(prompt("Porcentaje interes"));
+
+ let valorProducto = calcularCuotas (precioArticulo, cantidadCuotas, porcentajeInteres)
+  console.log (valorProducto);
 
 
  // Arituculos
 
 
- function Vehiculos(modelo, marca, version, anio, combustible, precio){
-    this.modelo = modelo;
-    this.marca = marca;
-    this.version = version
-    this.anio = anio;
-    this.combustible = combustible;
-    this.precio = precio;
- }
+ class Vehiculo {
+    constructor(modelo, marca, version, anio, combustible, precio) {
+        this.modelo = modelo;
+        this.marca = marca;
+        this.version = version;
+        this.anio = anio;
+        this.combustible = combustible;
+        this.precio = precio;
+    }
+}
 
- const volkswagenGolTrend = new Vehiculos("Auto","Volkswagen", "Gol Trend", "2018", "Nafta", "$3500000");
- const fiatPalio = new Vehiculos("Auto","Fiat", "Palio", "2014", "Nafta", "$3500000");
- const fordFiesta = new Vehiculos("Auto","Ford", "Fiesta Kinetic", "2014", "Nafta", "$2750000");
- const peugeot208 = new Vehiculos("Auto","Peugeot","208", "2017", "Diesel", "$3890000");
- const toyotaHilux = new Vehiculos("Camioneta","Toyota", "Hilux", "2015", "Turbo Diesel", "$4350000");
+ const volkswagenGolTrend = new Vehiculo("Auto","Volkswagen", "Gol Trend", "2018", "Nafta", "$3500000");
+ const fiatPalio = new Vehiculo("Auto","Fiat", "Palio", "2014", "Nafta", "$3500000");
+ const fordFiesta = new Vehiculo("Auto","Ford", "Fiesta Kinetic", "2014", "Nafta", "$2750000");
+ const peugeot208 = new Vehiculo("Auto","Peugeot","208", "2017", "Diesel", "$3890000");
+ const toyotaHilux = new Vehiculo("Camioneta","Toyota", "Hilux", "2015", "Turbo Diesel", "$4350000");
 
  
  //Agregar articulos nuevos
+const vehiculos = [];
 
+function agregarVehiculo () {
+    let modeloVehiculo = prompt("Modelo (Auto, Camioneta, Utilitario)");
+    let marcaVehiculo = prompt("Marca");
+    let versionVehiculo = prompt("Version");
+    let anioVehiculo = parseInt(prompt("Año"));
+    let combustibleVehiculo = prompt("Combustible");
+    let precioVehiculo = parseInt(prompt("Precio"));
 
-const nuevoVehiculo = () =>  {
-	let modeloVehiculo = prompt("Modelo (Auto, Camioneta, Utilitario)");
-	let marcaVehiculo = prompt("Marca");
-	let versionVehiculo = prompt("Version");
-	let anioVehiculo = parseInt(prompt("Año"));
-	let combustibleVehiculo = prompt("Combustible");
-	let precioVehiculo = parseInt(prompt("Precio"));
-
-    const vehiculo = new Vehiculos(modeloVehiculo, marcaVehiculo, versionVehiculo, anioVehiculo, combustibleVehiculo, precioVehiculo);
-    console.log(vehiculo);
-    return vehiculo;
+    const vehiculoNuevo = new Vehiculo(modeloVehiculo, marcaVehiculo, versionVehiculo, anioVehiculo, combustibleVehiculo, precioVehiculo);
+    vehiculos.push(vehiculoNuevo);
+    return vehiculoNuevo;
 }
+agregarVehiculo();
+
+//Buscador de productos
+
+const productos = [
+    {tipo: "auto", marca: "Volkswagen", version: "Gol Trend", anio: "2018", combustible: "Nafta", precio: "$3500000" },
+    {tipo: "camioneta", marca: "Ford", version: "Ranger", anio: "2020", combustible: "Diesel", precio: "$5000000" },
+    {tipo: "auto", marca: "Fiat", version: "Palio", anio: "2015", combustible: "Nafta", precio: "$2300000" },
+]
+
+const resultadoBusqueda = productos.filter((el)  => el.tipo.indexOf(prompt("Buscar")));
+console.log(resultadoBusqueda);
